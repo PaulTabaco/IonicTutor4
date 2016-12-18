@@ -39,21 +39,40 @@
 
     <ion-pane>
       <ion-header-bar class="bar-positive">
+        <div class="buttons" ng-if="feeds">
+          <button class="button" ng-click="clearFeeds()">
+            <i class="ion-close"></i>
+          </button>
+        </div>
         <h1 class="title">Find feed!</h1>
       </ion-header-bar>
 
       <ion-content class="padding">
+        <!-- Show (if) error above input and popup-->
+        <div ng-if="error">
+          Error 1
+        </div>
+
+        <div ng-if="error" ng-init="showError('Invalid URL typed 2')">
+
+        </div>
+
 
         <div class="list">
+          <!-- Input -->
           <label class="item item-input">
             <input type="text" ng-model="feed.url" placeholder="Feed URL...">
           </label>
+
+          <!-- Button -->
           <button class="item button button-block button-positive " ng-disabled="!feed.url" ng-click="loadFeed()">
             Submit
           </button>
         </div>
 
         <div class="row-fluid" >
+
+          <!-- Shows fond rss feeds like cards -->
           <div ng-repeat= "feed in feeds">
             <div class="card">
               <div class="item item-divider">
